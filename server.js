@@ -47,6 +47,19 @@ router.put('/:id', function(req, res) {
 	}
 });
 
+router.delete('/:id', function(req, res) {
+	var indexToDel = -1;
+	_.each(json, function(elem, index) {
+		if (elem.Id === req.params.id) {
+			indexToDel = index;
+		}
+	});
+	if (~indexToDel) {
+		json.splice(indexToDel, 1);
+	}
+	res.json(json);
+});
+
 app.use('/', router);
 
 var server = app.listen(app.get('port'), function() {
