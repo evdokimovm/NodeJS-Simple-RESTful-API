@@ -10,7 +10,11 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 var router = new express.Router();
-// TO DO: Setup endpoints ...
+
+router.get('/', function(req, res) {
+	res.json(json);
+});
+
 app.use('/', router);
 
 var server = app.listen(app.get('port'), function() {
